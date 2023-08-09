@@ -100,8 +100,8 @@
   																	<label class="required form-label">وضعیت</label>
                                     <select class="form-control" data-control="select2" name='role' required>
                                         <option selected disabled value="">انتخاب کنید</option>
-                                        <option value="0">غیرفعال</option>
-                                        <option value="1">فعال</option>
+                                        <option value="1">ادمین اصلی</option>
+                                        <option value="2">همکار</option>
                                     </select>
   																</div>
                                 </div>

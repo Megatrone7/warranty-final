@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Product_category;
+use App\Models\User;
 use App\Models\Warranty;
 use App\Models\Warranty_type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 
 class WarrantyController extends Controller
@@ -17,7 +19,18 @@ class WarrantyController extends Controller
     public function index()
     {
         $Warranty = Warranty::all();
-        return view('panel.cities.list',compact('Warranty'));
+if(Auth::user()->role==1) {
+    return view('panel.cities.list', compact('Warranty'));
+}
+else
+{
+    
+    $id=Auth::user()->id;
+    
+    $warranti=Warranty::where('owner_id', $id)->get(); 
+
+    return view('panel.cities.list2', compact('warranti'));
+}
         
     }
 
@@ -28,7 +41,8 @@ class WarrantyController extends Controller
     {
         $category= Product_category::all();
         $type=Warranty_type::all();
-        return view('panel.cities.create',compact('category','type'));
+        $user=User::all();
+        return view('panel.cities.create',compact('category','type','user'));
     }
 
     /**
@@ -46,6 +60,7 @@ class WarrantyController extends Controller
       'count' =>  $request->count,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,
+      'owner_id'=>$request->owner_id
                 
         ];
                     

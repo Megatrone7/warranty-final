@@ -92,6 +92,18 @@
                                     </select>
   																</div>
                                 </div>
+								<div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">کاربر</label>
+                                    <select class="form-control" data-control="select2" name='owner_id' required>
+                                        <option selected disabled value="">انتخاب کنید</option>
+										{{$i=1}}
+										@foreach ($user as $users )
+										
+                                        <option value="{{$users->id}}">{{$users->name}}</option>
+                                        @endforeach
+                                    </select>
+  																</div>
+                                </div>
 																  <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">زمان</label>
   																	<input type="text" name="length" class="form-control mb-2" value="" required/>

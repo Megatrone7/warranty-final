@@ -61,12 +61,7 @@
                         </div>
                         <!--end::جستجو-->
                       </div>
-											<div class="card-toolbar">
-												<div class="card-toolbar">
-                        
-                        <a href="{{route('warranty.create')}}" class="btn btn-sm fw-bold btn-primary" >ساختن</a>
-                        
-											</div>
+											
 											</div>
 										</div>
 										<!--end::Header-->
@@ -108,7 +103,7 @@
 													<!--begin::Table body-->
 													<tbody>
                             <?php $i=1; ?>
-                            @foreach($Warranty as $warranties)
+                            @foreach($warranti as $warranties)
 														<tr>
                               <td>
                                 {{$i++}}
@@ -120,7 +115,7 @@
 																{{$warranties->type}}
 															</td>
 															<td>
-																{{$warranties->length}}
+																{{$warranties->length}}ماه 
 															</td>
 															<td>
 																{{$warranties->serial_number}}
@@ -144,23 +139,6 @@
 															</td>
 															<td>
                                
-																<form action="{{ route('warranty.destroy',  $warranties->id) }}" method="POST">
-    @csrf
-
-    @method('DELETE')
-																<button type="submit" class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$warranties->id}}'/>
-																
-
-																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-																	حذف
-																	<!--end::Svg Icon-->
-																</form>
-																
-																<a href="{{ route('warranty.edit',  $warranties->id) }}" class="btn text-warning btn-bg-light btn-active-color-primary btn-sm me-1">
-																	<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-																	ویرایش
-																	<!--end::Svg Icon-->
-																</a>
 
 
 															</td>

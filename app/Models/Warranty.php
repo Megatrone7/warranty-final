@@ -20,7 +20,8 @@ class Warranty extends Model
         'serial_number',
         'status',
         'expire_time',
-        'product_category'  
+        'product_category',
+        'owner_id' 
     
     ];
 
@@ -43,12 +44,14 @@ class Warranty extends Model
             //  ->update(['warranty_serial' => $i]); 
                      if($query['type']=1) 
                      {
-                        $data=Carbon::now()->addMonth(3);
+                        $data=Carbon::now()->setTime(0, 0)->addMonth(3);
+                        //$data = substr($data, 1);
                          $query['expire_time']=$data;
                             }
                        if($query['type']=2)
                 {
-                $data=Carbon::now()->addMonth($query['length']);
+                $data=Carbon::now()->setTime(0, 0)->addMonth($query['length']);
+                //$data = substr($data, 1);
                 $query['expire_time']=$data;
 
             }
@@ -76,6 +79,16 @@ class Warranty extends Model
         $name = $name -> title;
         return $name;
 
+    }
+    public function getowneridAttribute($value){
+        $name = User::find($value);
+        $name = $name -> name;
+        return $name;
+    }
+    public function gettypeAttribute($value){
+        $name = Warranty_type::find($value);
+        $name = $name -> type;
+        return $name;
     }
      public static function get_persent()
      {

@@ -15,7 +15,19 @@ class ProductController extends Controller
     {
         $category=Product_category::get_catgory();
         $products=Product::all();
-        return view('panel.products.list',compact('category','products'));
+        if(Auth::user()->role==1) {
+            return view('panel.products.list', compact('category','products'));
+        }
+        else
+        {
+          
+            
+            $id=Auth::user()->id;
+            
+            $products=Product::where('owner_id', $id)->get(); 
+        
+            return view('panel.products.list', compact('category','products'));
+        }
     }
 
     /**

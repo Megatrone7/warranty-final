@@ -117,10 +117,10 @@
 															</td>
 															<td>{{$user->family}}</td>
 															<td>
-                                @if($user->role=='0')
-                                  <span class="badge badge-light-danger">غیرفعال</span>
+                                @if($user->role=='2')
+                                  <span class="badge badge-light-danger">همکار</span>
                                 @elseif($user->role=='1')
-                                  <span class="badge badge-light-success">فعال</span>
+                                  <span class="badge badge-light-success">ادمین اصلی</span>
                                 @endif	
 															</td>
 															<td>
