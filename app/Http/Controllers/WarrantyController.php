@@ -58,6 +58,7 @@ else
       'length' => $request->length,
      'status' =>0,
       'count' =>  $request->count,
+      'name'=> $request->name,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,
       'owner_id'=>$request->owner_id

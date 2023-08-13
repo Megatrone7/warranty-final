@@ -34,6 +34,8 @@ class Warranty extends Model
         }  
         if($last!==0) {
             $last= $last->serial_number;
+            $last = preg_replace("/[^0-9]/", '', $last);
+            $last = (int)$last;
         }
         $count= $query['count'];
         // $product = new Product();
@@ -43,7 +45,8 @@ class Warranty extends Model
         //$a= count($x);
         //  if($count<=$a) {
            for($i=$last+1;$i<=$last+$count;$i++) {
-             $query['serial_number'] = $i; 
+             $query['serial_number'] = $query['name'].$i.random_int(1,9999); 
+             
               $product_cat=$query['product_category'];
             //   Product::where('id_category', $product_cat)->where('warranty_serial', null)->first()
             //  ->update(['warranty_serial' => $i]); 
@@ -60,6 +63,7 @@ class Warranty extends Model
                 $query['expire_time']=$data;
 
             }
+            
 
             Warranty::create($query);
            }    

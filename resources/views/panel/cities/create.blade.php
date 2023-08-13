@@ -108,6 +108,10 @@
   																	<label class="required form-label">زمان</label>
   																	<input type="text" name="length" class="form-control mb-2" value="" required/>
   																</div>
+																  <div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">اسم گارانتی</label>
+  																	<input type="text" name="name" class="form-control mb-2" value="" required/>
+  																</div>
 															
 																  <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">تعداد</label>
