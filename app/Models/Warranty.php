@@ -28,27 +28,32 @@ class Warranty extends Model
      //Warranty::('files')->latest('upload_time')->first();
 
      public static function getLastWarranty($query) {
-        $last = Warranty::orderBy('id', 'desc')->first();      
-    $lastt= $last->serial_number;
+        $last = Warranty::orderBy('id', 'desc')->first(); 
+        if ($last==null) {
+            $last= 0;
+        }  
+        if($last!==0) {
+            $last= $last->serial_number;
+        }
         $count= $query['count'];
-        $product = new Product();
-        $x = $product->where([
-            ['warranty_serial', '=', null],
-        ])->get();
-        $a= count($x);
+        // $product = new Product();
+        // $x = $product->where([
+        //     ['warranty_serial', '=', null],
+        // ])->get();
+        //$a= count($x);
         //  if($count<=$a) {
-           for($i=$lastt+1;$i<=$lastt+$count;$i++) {
+           for($i=$last+1;$i<=$last+$count;$i++) {
              $query['serial_number'] = $i; 
               $product_cat=$query['product_category'];
             //   Product::where('id_category', $product_cat)->where('warranty_serial', null)->first()
             //  ->update(['warranty_serial' => $i]); 
-                     if($query['type']=1) 
+                     if($query['type']==1) 
                      {
                         $data=Carbon::now()->setTime(0, 0)->addMonth(3);
                         //$data = substr($data, 1);
                          $query['expire_time']=$data;
                             }
-                       if($query['type']=2)
+                       if($query['type']==2)
                 {
                 $data=Carbon::now()->setTime(0, 0)->addMonth($query['length']);
                 //$data = substr($data, 1);
@@ -93,22 +98,20 @@ class Warranty extends Model
      public static function get_persent()
      {
         $all=Warranty::all();
-        $b=0;
+        $waranty=0;
         $count =count(Warranty::all());
-        foreach($all as $alll)
-        {
-            if($alll['status']==1)
-            {
-                $b++;
-            }
-
-
+if($count!==0) {
+    foreach($all as $active) {
+        if($active['status']==1) {
+            $waranty++;
         }
-        $darsad=$b*100/$count;
-       $darsad = round($darsad);
-       $array = ['darsad'=>$darsad,'tedadkol'=>$count,'garanti'=>$b];
-        return $array;
-        
-        
+
+
+    }
+    $darsad=$waranty*100/$count;
+    $darsad = round($darsad);
+    $array = ['darsad'=>$darsad,'tedadkol'=>$count,'garanti'=>$waranty];
+    return $array;
+}      
      }
 }

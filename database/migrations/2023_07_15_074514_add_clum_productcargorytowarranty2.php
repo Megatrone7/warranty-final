@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('warranties', function (Blueprint $table) {
-            $table->foreignId('product_category')->constrained('product_categories');
+            $table->foreignId('product_category')->nullable()->constrained('product_categories');
         });
     }
 

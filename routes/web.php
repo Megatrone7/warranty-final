@@ -8,6 +8,10 @@ use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\Product_categoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarrantyController;
+use App\Services\Permission\Traits\HasPermissions;
+use App\Models\User;
+use Spatie\Permission\Traits\HasRoles;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +26,7 @@ use App\Http\Controllers\WarrantyController;
 
 Route::get('/', function () {
     return view('welcome');
+    // auth()->user()->givePermissionsTo(['delete post','delete user']);
 });
 Route::get('/dashboard', function () {
     return view('panel.other.dashboard');

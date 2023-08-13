@@ -9,8 +9,7 @@ class Product_category extends Model
 {
     public static function get_catgory()
     {
-        $catogry=Product_category::all();
-        return $catogry;
+        return Product_category::all(); 
         
     }
     protected $fillable = [

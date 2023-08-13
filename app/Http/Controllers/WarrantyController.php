@@ -56,7 +56,7 @@ else
        'title' => $request->title,
       'type' =>$request->type,
       'length' => $request->length,
-     'status' =>$request->status,
+     'status' =>0,
       'count' =>  $request->count,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,

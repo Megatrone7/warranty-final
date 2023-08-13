@@ -82,9 +82,9 @@
   																</div>
 																  <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">نوع</label>
-                                    <select class="form-control" data-control="select2" name='product_category' required>
+                                    <select class="form-control" data-control="select2" name='type' required>
                                         <option selected disabled value="">انتخاب کنید</option>
-										{{$i=1}}
+										
 										@foreach ($type as $types )
 										
                                         <option value="{{$types->id}}">{{$types->type}}</option>
@@ -108,10 +108,7 @@
   																	<label class="required form-label">زمان</label>
   																	<input type="text" name="length" class="form-control mb-2" value="" required/>
   																</div>
-																  <div class="mb-10 fv-row col-4">
-  																	<label class="required form-label">وضعیت</label>
-  																	<input type="text" name="status" class="form-control mb-2" value="" required/>
-  																</div>
+															
 																  <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">تعداد</label>
   																	<input type="text" name="count" class="form-control mb-2" value="" required/>

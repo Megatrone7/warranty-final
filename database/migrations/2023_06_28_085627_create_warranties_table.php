@@ -16,17 +16,14 @@ return new class extends Migration
         Schema::create('warranties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('type');
-            $table->foreign('type')->references('id')->on('warranty_types');
+            $table->foreignid('type')->nullable()->constrained('warranty_types')->nullOnDelete();
             $table->bigInteger('length');
             $table->unsignedBigInteger('serial_number')->unique();
-            $table->unsignedBigInteger('status');
-            $table->foreign('status')->references('id')->on('status');
+            $table->foreignId('status')->nullable()->constrained('status')->nullOnDelete();
             $table->dateTime('expire_time');
             $table->timestamp('created_at')->useCurrent();
             
             $table->timestamp('updated_at')->useCurrent();
-            $table->softDeletes();
         });
 
         Schema::enableForeignKeyConstraints();

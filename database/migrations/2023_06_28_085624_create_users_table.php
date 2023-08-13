@@ -20,8 +20,7 @@ return new class extends Migration
             $table->char('Email');
             $table->bigInteger('mobile');
             $table->string('password');
-            $table->unsignedBigInteger('role');
-            $table->foreign('role')->references('id')->on('roles')->onDelete('restrict');
+            $table->foreignId('role')->nullable()->constrained()->nullOnDelete();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             

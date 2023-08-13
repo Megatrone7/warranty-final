@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('warranties', function (Blueprint $table) {
-            $table->foreignId('owner_id')->nullable()->default(null)->constrained('users');
+            $table->foreignId('owner_id')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

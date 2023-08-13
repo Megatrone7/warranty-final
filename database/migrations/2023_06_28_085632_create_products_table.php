@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedBigInteger('id_category');
-            $table->foreign('id_category')->references('id')->on('product_categories');
+    
+            $table->foreignid('id_category')->nullable()->constrained('product_categories')->nullOnDelete();
             $table->unsignedBigInteger('warranty_serial')->unique();
-            $table->foreign('warranty_serial')->references('serial_number')->on('warranties');
+            
             //$table->unsignedBigInteger('owner_id');
             // $table->foreignId('owner_id')->references('id')->on('users')->onDelete('SET NULL');
-            $table->foreignId('owner_id')->constrained('users')->onDelete('restrict');
+            $table->foreignId('owner_id')->nullable()->constrained('users')->nullOnDelete();
             $table->dateTime('sale_date')->nullable()->default(null);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

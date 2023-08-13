@@ -9,6 +9,8 @@ use App\Models\Product_category;
 
 use App\Exceptions\InvalidOrderException;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+
 class Product extends Model
 {
     use HasFactory;
@@ -28,20 +30,20 @@ class Product extends Model
          Product::create($query);
          $product_category = $query['id_category'];
         
-            $warranty = Warranty::where('product_category',$product_category)->where('status',0)->first();
-            Warranty::where('product_category',$product_category)->where('status',0)->first()->update(['status'=>1]);
-            $warranty = $warranty->serial_number;
-            Product::where('id_category',$product_category)->where('warranty_serial',null)->first()->update(['warranty_serial'=>$warranty]);  
+            $warranty = Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first();
 
-            
-       
+            Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first()->update(['status'=>1]);
+
+            $warranty = $warranty->serial_number;
+
+            Product::where('id_category',$product_category)->where('warranty_serial',null)->first()->update(['warranty_serial'=>$warranty]);  
        
     
 }
 
     public function getidcategoryAttribute($value){
-        $name = Product_category::find($value);
-        $name = $name -> title;
+        $name =  Product_category::find($value);
+        $name = $name -> title; 
         return $name;
 
     }
