@@ -12,7 +12,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('panel.warranties.list');
     }
 
     /**
@@ -20,7 +20,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel.warranties.create');
     }
 
     /**

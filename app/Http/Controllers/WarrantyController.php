@@ -61,11 +61,15 @@ else
       'name'=> $request->name,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,
-      'owner_id'=>$request->owner_id
+      'owner_id'=>$request->owner_id,
+    
                 
         ];
                     
-    Warranty::getLastWarranty($query);
+    
+    $last = Warranty::getLastWarranty();
+    Warranty::CalculationWarranty($query,$last);
+
     return redirect(route('warranty.index'));
     //  $text='حلال اوسون';
     //  return redirect(route('dashboard'))->withSuccess($text);
