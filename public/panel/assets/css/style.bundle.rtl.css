@@ -31901,6 +31901,7 @@ html:not([data-theme=dark]) .theme-light-bg-body {
 }
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm, .btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
   padding: calc(0.55rem + 1px) calc(1.25rem + 1px);
+  margin-right: 30px;
 }
 .btn.btn-link {
   border: 0;

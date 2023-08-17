@@ -62,9 +62,9 @@
 												<!--end::جستجو-->
 											</div>
 											<div class="card-toolbar">
-                        @if(Gate::allows('product_warranties-create'))
-                        <a href="/admin/warranties/create" class="btn btn-sm fw-bold btn-primary" >ساختن</a>
-                        @endif
+                       
+                        <a href="{{route('service.create')}}" class="btn btn-sm fw-bold btn-primary" >ساختن</a>
+                        
 											</div>
 										</div>
 										<!--end::Header-->
@@ -99,25 +99,25 @@
 													<!--begin::Table body-->
 													<tbody>
                             <?php $i=1; ?>
-                            @foreach($warranties as $warranty)
+                            
 														<tr>
                               <td>
-                                {{$i++}}
+                              
                               </td>
 															<td>
-																{{$warranty->title}}
+																
 															</td>
 
 															<td>
-                                @if($warranty->status=='0')
+                               
                                   <span class="badge badge-light-danger">غیرفعال</span>
-                                @elseif($warranty->status=='1')
+                              
                                   <span class="badge badge-light-success">فعال</span>
-                                @endif
+                              
 															</td>
 															<td>
-                                @if(Gate::allows('product_warranties-delete'))
-																<a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$warranty->id}}'>
+                               
+																<a  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-'>
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																	<span class="svg-icon svg-icon-3">
 																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,10 +128,10 @@
 																	</span>
 																	<!--end::Svg Icon-->
 																</a>
-                                @endif
+                                
 
-                                @if(Gate::allows('product_warranties-update'))
-                                <a href="{{route('admin.warranties.index')}}/{{$warranty->id}}/edit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                
+                                <a href="//edit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																	<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																	<span class="svg-icon svg-icon-3">
 																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,11 +141,11 @@
 																	</span>
 																	<!--end::Svg Icon-->
 																</a>
-                                @endif
+                                
 
 															</td>
 														</tr>
-                            @endforeach
+                            
 													</tbody>
 													<!--end::Table body-->
 												</table>
@@ -176,7 +176,7 @@
   $('body').on('click', '.delete-confirm', function() {
       var id = $(this).attr('id').split('-')[1];
       var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
-      var route = "{{route('admin.warranties.index')}}/"+id;
+      var route = "/"+id;
       var token = "{{ csrf_token() }}";
       q1(id,route,token,txt1);
     });

@@ -8,6 +8,8 @@ use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\Product_categoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarrantyController;
+use App\Http\Controllers\ServiceController;
+use App\Models\Service;
 use App\Services\Permission\Traits\HasPermissions;
 use App\Models\User;
 use Spatie\Permission\Traits\HasRoles;
@@ -48,7 +50,7 @@ Route::resource('/product',ProductController::class);
 Route::resource('/category',Product_categoryController::class);
 Route::resource('/warranty',WarrantyController::class);
 Route::post('/warrantys',[WarrantyController::class,'welcome'])->name('warrantys');
-
+Route::resource('/service',ServiceController::class);
 // Route::resource('/dashboard', WarrantyController::class);
 // Route::resource('/dsah', UserController::class);
 

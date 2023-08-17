@@ -44,7 +44,7 @@
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-xxl">
 									<!--begin::Form-->
-									<form id="kt_ecommerce_add_product_form" method="post" action="{{route('admin.warranties.store')}}" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+									<form id="kt_ecommerce_add_product_form" method="post" action="" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
                     @csrf
                     <!--begin::کناری column-->
 
@@ -77,17 +77,20 @@
                                   @endif
                                 <div class="row">
                                   <div class="mb-10 fv-row col-4">
-  																	<label class="required form-label">عنوان</label>
+  																	<label class="required form-label">شماره سریال گارانتی</label>
+  																	<input type="text" name="title" class="form-control mb-2" value="" required/>
+  																</div>
+
+																  <div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">نام و نام خانوادگی</label>
   																	<input type="text" name="title" class="form-control mb-2" value="" required/>
   																</div>
 
                                   <div class="mb-10 fv-row col-4">
-  																	<label class="required form-label">وضعیت</label>
-                                    <select class="form-control" data-control="select2" name='status' required>
-                                        <option selected disabled value="">انتخاب کنید</option>
-                                        <option value="0">غیرفعال</option>
-                                        <option value="1">فعال</option>
-                                    </select>
+  																	<label class="required form-label">شماره تماس</label>
+
+																	  <input type="text" name="title" class="form-control mb-2" value="" required/>
+                                 
   																</div>
                                 </div>
 																<!--begin::Input group-->

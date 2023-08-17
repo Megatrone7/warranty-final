@@ -63,9 +63,9 @@
                       </div>
 											<div class="card-toolbar">
 												<div class="card-toolbar">
-                        
+
                         <a href="{{route('warranty.create')}}" class="btn btn-sm fw-bold btn-primary" >ساختن</a>
-                        
+
 											</div>
 											</div>
 										</div>
@@ -100,7 +100,7 @@
 															<th class="min-w-120px text-center">تاریخ انقضا</th>
 															<th class="min-w-120px text-center">دسته بندی</th>
 															<th
-															<th 
+															<th
 															class="min-w-100px text-center">صاحب</th>
 														</tr>
 													</thead>
@@ -127,7 +127,7 @@
 															</td>
 															<td>
 																@if($warranties->status=='0')
-                                >غیرفعال
+                                غیرفعال
                               @else
 							  فعال
 							  @endif
@@ -140,22 +140,22 @@
 															</td>
 															<td>
 																{{$warranties->owner_id}}
-                               
+
 															</td>
 															<td>
-                               
+
 																<form action="{{ route('warranty.destroy',  $warranties->id) }}" method="POST">
     @csrf
 
     @method('DELETE')
 																<button type="submit" class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$warranties->id}}'/>
-																
+
 
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																	حذف
 																	<!--end::Svg Icon-->
 																</form>
-																
+
 																<a href="{{ route('warranty.edit',  $warranties->id) }}" class="btn text-warning btn-bg-light btn-active-color-primary btn-sm me-1">
 																	<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																	ویرایش
@@ -192,13 +192,13 @@
   </div>
   <!--end::Page-->
 </div>
-<script>
-  $('body').on('click', '.delete-confirm', function() {
-      var id = $(this).attr('id').split('-')[1];
-      var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
-      var route = "{{route('warranty.index')}}/cities/"+id;
-      var token = "{{ csrf_token() }}";
-      q1(id,route,token,txt1);
-    });
-</script>
+// <script>
+//   $('body').on('click', '.delete-confirm', function() {
+//       var id = $(this).attr('id').split('-')[1];
+//       var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
+//       var route = "{{route('warranty.index')}}/cities/"+id;
+//       var token = "{{ csrf_token() }}";
+//       q1(id,route,token,txt1);
+//     });
+// </script>
 @endsection

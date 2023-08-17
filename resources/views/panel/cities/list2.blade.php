@@ -61,7 +61,7 @@
                         </div>
                         <!--end::جستجو-->
                       </div>
-											
+
 											</div>
 										</div>
 										<!--end::Header-->
@@ -95,7 +95,7 @@
 															<th class="min-w-120px text-center">تاریخ انقضا</th>
 															<th class="min-w-120px text-center">دسته بندی</th>
 															<th
-															<th 
+															<th
 															class="min-w-100px text-center">صاحب</th>
 														</tr>
 													</thead>
@@ -115,14 +115,14 @@
 																{{$warranties->type}}
 															</td>
 															<td>
-																{{$warranties->length}}ماه 
+																{{$warranties->length}}ماه
 															</td>
 															<td>
 																{{$warranties->serial_number}}
 															</td>
 															<td>
 																@if($warranties->status=='0')
-                                >غیرفعال
+                                غیرفعال
                               @else
 							  فعال
 							  @endif
@@ -135,10 +135,10 @@
 															</td>
 															<td>
 																{{$warranties->owner_id}}
-                               
+
 															</td>
 															<td>
-                               
+
 
 
 															</td>
@@ -170,13 +170,13 @@
   </div>
   <!--end::Page-->
 </div>
-<script>
-  $('body').on('click', '.delete-confirm', function() {
-      var id = $(this).attr('id').split('-')[1];
-      var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
-      var route = "{{route('warranty.index')}}/cities/"+id;
-      var token = "{{ csrf_token() }}";
-      q1(id,route,token,txt1);
-    });
-</script>
+// <script>
+//   $('body').on('click', '.delete-confirm', function() {
+//       var id = $(this).attr('id').split('-')[1];
+//       var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
+//       var route = "{{route('warranty.index')}}/cities/"+id;
+//       var token = "{{ csrf_token() }}";
+//       q1(id,route,token,txt1);
+//     });
+// </script>
 @endsection
