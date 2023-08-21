@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\details;
 use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\User;
@@ -42,7 +43,8 @@ else
         $category= Product_category::all();
         $type=Warranty_type::all();
         $user=User::all();
-        return view('panel.cities.create',compact('category','type','user'));
+        $details=details::all();
+        return view('panel.cities.create',compact('category','type','user','details'));
     }
 
     /**
@@ -56,14 +58,13 @@ else
        'title' => $request->title,
       'type' =>$request->type,
       'length' => $request->length,
+      'details'=>$request->details,
      'status' =>0,
       'count' =>  $request->count,
       'name'=> $request->name,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,
       'owner_id'=>$request->owner_id,
-
-
         ];
     $last = Warranty::getLastWarranty();
     Warranty::CalculationWarranty($query,$last);
@@ -75,6 +76,7 @@ else
      */
     public function show(Request $request)
     {
+
         $query=[
             'id' => $request->id
         ];
@@ -129,9 +131,9 @@ else
        $warranty= Warranty::where('serial_number', $id)->first();
        if ($warranty==null) {
 
-        $war='وجود ندارد';
+        $noexits='وجود ندارد';
 
-        return view('welcome',compact('war'));
+        return view('welcome',compact('noexits'));
        }
        else
        {

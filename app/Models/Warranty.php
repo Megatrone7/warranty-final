@@ -24,7 +24,8 @@ class Warranty extends Model
         'owner_id',
         'is_archive',
         'is_deleted',
-        'active_date'
+        'active_date',
+        'details'
 
     ];
 

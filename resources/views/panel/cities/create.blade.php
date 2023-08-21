@@ -104,6 +104,17 @@
                                     </select>
   																</div>
                                 </div>
+								<div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">جزییات</label>
+                                    <select class="form-control" data-control="select2" name='details' required>
+                                        <option selected disabled value="">انتخاب کنید</option>
+										{{$i=1}}
+										@foreach ($details as $detail )
+										
+                                        <option value="{{$detail->id}}">{{$detail->description}}</option>
+                                        @endforeach
+                                    </select>
+  																</div>
 																  <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">زمان</label>
   																	<input type="date" name="expire_time" class="form-control mb-2" value="" required/>
@@ -138,7 +149,7 @@
 																<!--begin::Input group-->
                                 <div class="d-flex justify-content-end">
                                   <!--begin::Button-->
-                                  <a href="/admin/states" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
+                                  <a href="/warranty" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
                                   <!--end::Button-->
                                   <!--begin::Button-->
                                   <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">

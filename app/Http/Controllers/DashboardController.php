@@ -18,7 +18,7 @@ class DashboardController extends Controller
         ->get();
         // $haha=[];
 
-        // $contact=User::all();
+         $contact=User::all();
         // Foreach($contact as $contacts)
         // {
         //    if ($contacts['role']==4)
@@ -32,7 +32,8 @@ class DashboardController extends Controller
         // }
         $count=User::get_contact();
          $product=Product::get_product();
+         $warrantiess=Warranty::all();
 
-       return view('panel.other.dashboard',compact('warranties','contact','count','product'));
+       return view('panel.other.dashboard',compact('warranties','warrantiess','contact','count','product'));
     }
 }

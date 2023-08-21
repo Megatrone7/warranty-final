@@ -76,11 +76,6 @@
                                     </div>
                                   @endif
                                 <div class="row">
-
-                                 
-
-                               
-
                                   <div class="mb-10 fv-row col-6">
   																	<label class="required form-label">عنوان فارسی</label>
   																	<input type="text" name="name" class="form-control mb-2" value="" required/>
@@ -101,27 +96,10 @@
                                       @endforeach
                                     </select>
   																</div>
-
-                                  
-
-
-                                  
-        
-
-         
-
-                               
-
-                                  
-
                                   <div class="mb-10 fv-row col-12" dir="rtl">
   																	<label class="required form-label">متن</label>
                                     <textarea style="width: 45%" name='description' class=""></textarea>
   																</div>
-
-                                  
-
-
                                 </div>
 																<!--begin::Input group-->
 
@@ -129,7 +107,7 @@
 																<!--begin::Input group-->
                                 <div class="d-flex justify-content-end">
                                   <!--begin::Button-->
-                                  <a href="/admin/warranties" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
+                                  <a href="/product" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
                                   <!--end::Button-->
                                   <!--begin::Button-->
                                   <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -178,7 +156,6 @@
 $(document).ready(function(){
   var tags = document.querySelector("#tags");
   new Tagify(tags);
-
   tinymce.init({
       selector: 'textarea',
       height: 400,

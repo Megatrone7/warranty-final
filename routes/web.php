@@ -45,11 +45,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 Route::resource('/admins',UserController::class);
 Route::resource('/product',ProductController::class);
 Route::resource('/category',Product_categoryController::class);
 Route::resource('/warranty',WarrantyController::class);
 Route::post('/warrantys',[WarrantyController::class,'welcome'])->name('warrantys');
+Route::get('/servicee',[ServiceController::class,'asqar'])->name('servicee');
 Route::resource('/service',ServiceController::class);
 // Route::resource('/dashboard', WarrantyController::class);
 // Route::resource('/dsah', UserController::class);
