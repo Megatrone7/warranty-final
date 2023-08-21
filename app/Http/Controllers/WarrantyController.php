@@ -65,13 +65,9 @@ else
 
 
         ];
-
-
     $last = Warranty::getLastWarranty();
     Warranty::CalculationWarranty($query,$last);
-
     return redirect(route('warranty.index'));
-
     }
 
     /**
