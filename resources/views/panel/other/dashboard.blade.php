@@ -352,9 +352,9 @@
   													<!--end::Table head-->
   													<!--begin::Table body-->
   													<tbody>
-                        
+                              @foreach($warrantiess as $warranties)
                               <tr>
-                            @foreach($warrantiess as $warranties)
+                            
                                 <td>
                                  {{$warranties->id}}
                                 </td>
@@ -379,9 +379,9 @@
                                     <span class="badge badge-light-success">فعال</span>
                                  @endif
                                 </td>
-@endforeach
+
                               </tr>
-                              
+                              @endforeach
   													</tbody>
   													<!--end::Table body-->
   												</table>

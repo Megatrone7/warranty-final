@@ -78,7 +78,7 @@
                   <div class="fw-bold d-flex align-items-center fs-5"></div>
                   <a href="#"
                     class="fw-semibold text-muted text-hover-primary fs-7"></a>
-
+                    {{@Auth::user()->name}}
                 </div>
                 <!--end::کاربرname-->
               </div>
@@ -97,6 +97,7 @@
                 onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                 خروج
+                {{@Auth::user()->name}} 
             </a>
 
             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeleteController;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Product_categoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarrantyController;
@@ -45,9 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::middleware(['auth','Admin'])->group(function () {
+    Route::resource('/admins',UserController::class);
+});
 
-
-Route::resource('/admins',UserController::class);
 Route::resource('/product',ProductController::class);
 Route::resource('/category',Product_categoryController::class);
 Route::resource('/warranty',WarrantyController::class);

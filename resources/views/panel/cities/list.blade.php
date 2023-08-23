@@ -63,9 +63,9 @@
                       </div>
 											<div class="card-toolbar">
 												<div class="card-toolbar">
-
+@can('isAdmin')
                         <a href="{{route('warranty.create')}}" class="btn btn-sm fw-bold btn-primary" >ساختن</a>
-
+@endcan
 											</div>
 											</div>
 										</div>
@@ -143,11 +143,12 @@
 
 															</td>
 															<td>
-
+																@can('isAdmin')
 																<form action="{{ route('warranty.destroy',  $warranties->id) }}" method="POST">
     @csrf
 
     @method('DELETE')
+	
 																<button type="submit" class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$warranties->id}}'/>
 
 
@@ -161,7 +162,7 @@
 																	ویرایش
 																	<!--end::Svg Icon-->
 																</a>
-
+@endcan
 
 															</td>
 														</tr>
@@ -201,4 +202,5 @@
 //       q1(id,route,token,txt1);
 //     });
 // </script>
+}
 @endsection
