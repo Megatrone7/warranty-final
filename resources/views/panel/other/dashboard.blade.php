@@ -259,46 +259,7 @@
                   <!--end::کارت widget 7-->
                 </div>
 
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-1">
-                  <a href="/admin/orders">
-                  <!--begin::کارت widget 20-->
-                  <div class="card card-flush bg-info bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-30 mb-5 mb-xl-1"
-                    >
-                    <!--begin::Header-->
-                    <div class="card-header pt-5">
-                      <!--begin::Title-->
-                      <div class="card-title d-flex flex-column">
-                        <!--begin::مقدار-->
-                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2"> تومان</span>
-                        <!--end::مقدار-->
-                        <!--begin::Subtitle-->
-                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">فروش ماه جاری
-                        </span>
-                        <!--end::Subtitle-->
-                      </div>
-                      <!--end::Title-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::کارت body-->
-                    <div class="card-body d-flex align-items-end pt-0 pb-4">
-                      <!--begin::پردازش-->
-                      <div class="d-flex align-items-center flex-column mt-3 w-100">
-                        <div
-                          class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                          <span>کل</span>
-                          <span> تومان</span>
-                        </div>
-
-                      </div>
-                      <!--end::پردازش-->
-                    </div>
-                    <!--end::کارت body-->
-                  </div></a>
-                  <!--end::کارت widget 20-->
-                  <!--begin::کارت widget 7-->
-
-                  <!--end::کارت widget 7-->
-                </div>
+            
                 <!--end::Col-->
                 <!--begin::Col-->
 
@@ -318,49 +279,10 @@
                   <!--begin::Chart widget 36-->
                   <div class="card card-flush overflow-hidden h-lg-100">
                     <!--begin::Header-->
-                    <div class="card-header pt-5">
-                      <!--begin::Title-->
-                      <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bold text-dark"></span>
-                      </h3>
-                      <!--end::Title-->
-                      <!--begin::Toolbar-->
-                      <ul class="nav nav-pills nav-justified" role="tablist">
-                                  <li class="nav-item waves-effect waves-light">
-                                      <a class="nav-link-month active" data-toggle="tab" data-a="" data-b="month" role="tab">
-                                          <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                          <span class="d-none d-sm-block">ماهانه</span>
-                                      </a>
-                                  </li>
-                                  <li class="nav-item waves-effect waves-light">
-                                      <a class="nav-link-day" data-toggle="tab" data-a="" data-b="day" role="tab">
-                                          <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                          <span class="d-none d-sm-block">روزانه</span>
-                                      </a>
-                                  </li>
-
-                              </ul>
-                      <!--end::Toolbar-->
-                    </div>
+                   
                     <!--end::Header-->
                     <!--begin::کارت body-->
-                    <div class="card-body d-flex align-items-end p-0">
-                      <!--begin::Chart-->
-                      <div class="tab-content p-3 text-muted col-12">
-                                  <div class="tab-pane active" id="-month" role="tabpanel">
-                                      <p class="mb-0">
-                                        <div id="_month_chart" class="apex-charts"></div>
-                                      </p>
-                                  </div>
-                                  <div class="tab-pane" id="-day" role="tabpanel">
-                                      <p class="mb-0">
-                                        <div id="_day_chart" class="apex-charts"></div>
-                                      </p>
-                                  </div>
-
-                              </div>
-                      <!--end::Chart-->
-                    </div>
+                    
                     <!--end::کارت body-->
                   </div>
                   <!--end::Chart widget 36-->
@@ -423,7 +345,7 @@
                                 <th class="min-w-140px text-center">کد محصول</th>
                                 <th class="min-w-140px text-center">دسته بندی</th>
   															<th class="min-w-140px text-center">عنوان</th>
-                                <th class="min-w-140px text-center">مبلغ</th>
+                                <th class="min-w-140px text-center">صاحب</th>
   															<th class="min-w-120px text-center">وضعیت</th>
   														</tr>
   													</thead>
@@ -432,31 +354,32 @@
   													<tbody>
                         
                               <tr>
+                            @foreach($warrantiess as $warranties)
                                 <td>
-                                 
+                                 {{$warranties->id}}
                                 </td>
                                 <td>
-                                  
-                                </td>
-
-                                <td>
-                                  
-                                </td>
-                                <td>
-                                  <a href='/products/' target="_blank"></a>
+                                  {{$warranties->serial_number}}
                                 </td>
 
                                 <td>
-                                   تومان
+                                  {{$warranties->product_category}}
                                 </td>
                                 <td>
-                                  
+                                  {{$warranties->title}}
+                                </td>
+
+                                <td>
+                                  {{$warranties->owner_id}}
+                                </td>
+                                <td>
+                                  @if($warranties->status==0)
                                     <span class="badge badge-light-danger">غیرفعال</span>
-                                 
+                                @else
                                     <span class="badge badge-light-success">فعال</span>
-                                 
+                                 @endif
                                 </td>
-
+@endforeach
                               </tr>
                               
   													</tbody>
@@ -536,24 +459,24 @@
   													<tbody>
                         
   														<tr>
+                                @foreach($contact as $contacts)
                                 <td>
-                                 
+                                 {{$contacts->id}}
                                 </td>
   															<td>
-  																<a href="/edit" target="_blank"></a>
+                                  
+  																{{$contacts->mobile}}
   															</td>
   															<td>
-  																
+  																{{$contacts->name}}
   															</td>
-  															<td></td>
+  															<td>{{$contacts->family}}</td>
   															<td>
                                  
-                                    <span class="badge badge-light-danger">غیرفعال</span>
-                                
-                                    <span class="badge badge-light-success">فعال</span>
+                                   {{$contacts->role}}
                                   
   															</td>
-
+@endforeach
   														</tr>
                              
   													</tbody>

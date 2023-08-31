@@ -1,6 +1,6 @@
 
-function q1(id,route,token,txt1,type=null)
-{
+function q1(id, route, token, txt1, type = null) {
+  console.log(id, route, token, txt1, type = null);
   Swal.fire({
     title: txt1,
     icon: 'warning',
@@ -14,17 +14,17 @@ function q1(id,route,token,txt1,type=null)
     if (result.value) {
       $_token = token;
       $.ajax({
-        headers: { 'X-CSRF-Token' : $_token },
+        headers: { 'X-CSRF-Token': $_token },
         url: route,
         type: 'DELETE',
         cache: false,
         data: { 'id': id }, //see the $_token
-        success: function(data) {
-          if(data=='0')
-          {
+        success: function (data) {
+          console.log(data);
+          if (data == '0') {
             Swal.fire({
               title: 'عملیات ناموفق',
-              text : 'خطا در انجام عملیات',
+              text: 'خطا در انجام عملیات',
               icon: 'error',
               showCancelButton: false,
               confirmButtonColor: '#3085d6',
@@ -32,10 +32,10 @@ function q1(id,route,token,txt1,type=null)
               confirmButtonText: 'باشه'
             });
           }
-          else if(data=='1'){
+          else if (data == '1') {
             Swal.fire({
               title: 'عملیات موفق',
-              text : 'انجام عملیات با موفقیت انجام شد',
+              text: 'انجام عملیات با موفقیت انجام شد',
               icon: 'success',
               showCancelButton: false,
               confirmButtonColor: '#3085d6',
@@ -47,10 +47,10 @@ function q1(id,route,token,txt1,type=null)
               }
             });
           }
-
         },
-        error: function(data) {
+        error: function (data) {
           console.log(data);
+          location.reload();
         }
       });
     }
@@ -61,17 +61,17 @@ function q1(id,route,token,txt1,type=null)
 
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
   datatable = $(".datatable1").DataTable({
     'pageLength': 10,
     'ordering': true,
     'paging': true,
-    'searching':true
+    'searching': true
   });
 
   const filterSearch = document.querySelector('[data-kt-ecommerce-order-filter="search"]');
   filterSearch.addEventListener('keyup', function (e) {
-      datatable.search(e.target.value).draw();
+    datatable.search(e.target.value).draw();
   });
 
 });

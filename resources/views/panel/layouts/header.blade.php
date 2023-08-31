@@ -52,7 +52,7 @@
           <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
-            {{Auth::user()->name}}
+           
           </div>
           <!--begin::کاربر account menu-->
           <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
@@ -64,7 +64,7 @@
                 {{ <div class="symbol symbol-50px me-5">
                   @if(Auth::user()->image=="" || Auth::user()->image==null)
                     <img src="/panel/assets/media/avatars/300-1.jpg" alt="">
-                    
+
                   @else
                     <img src="{{Auth::user()->image}}" alt="">
                   @endif }} --}}
@@ -78,7 +78,7 @@
                   <div class="fw-bold d-flex align-items-center fs-5"></div>
                   <a href="#"
                     class="fw-semibold text-muted text-hover-primary fs-7"></a>
-                  
+
                 </div>
                 <!--end::کاربرname-->
               </div>
@@ -88,17 +88,17 @@
             <div class="separator my-2"></div>
             <!--end::Menu separator-->
             <!--begin::Menu item-->
-            
-           
-            
+
+
+
             <!--begin::Menu item-->
             @if (Auth::check())
-            <a href="{{ url('/logout') }}"
+            <a style="margin-right: +25px" href="{{ url('/logout') }}"
                 onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                 خروج
             </a>
-        
+
             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>

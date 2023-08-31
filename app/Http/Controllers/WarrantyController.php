@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\details;
 use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\User;
@@ -18,20 +19,20 @@ class WarrantyController extends Controller
      */
     public function index()
     {
-        $Warranty = Warranty::all();
+        $Warranty = Warranty::where('is_deleted', null)->get();
 if(Auth::user()->role==1) {
     return view('panel.cities.list', compact('Warranty'));
 }
 else
 {
-    
+
     $id=Auth::user()->id;
-    
-    $warranti=Warranty::where('owner_id', $id)->get(); 
+
+    $warranti=Warranty::where('owner_id', $id)->get();
 
     return view('panel.cities.list2', compact('warranti'));
 }
-        
+
     }
 
     /**
@@ -42,7 +43,8 @@ else
         $category= Product_category::all();
         $type=Warranty_type::all();
         $user=User::all();
-        return view('panel.cities.create',compact('category','type','user'));
+        $details=details::all();
+        return view('panel.cities.create',compact('category','type','user','details'));
     }
 
     /**
@@ -52,42 +54,21 @@ else
     {
         $query=
             [
-               
+
        'title' => $request->title,
       'type' =>$request->type,
       'length' => $request->length,
+      'details'=>$request->details,
      'status' =>0,
       'count' =>  $request->count,
       'name'=> $request->name,
       'expire_time' => $request->expire_time,
       'product_category'=>$request->product_category,
       'owner_id'=>$request->owner_id,
-    
-                
         ];
-                    
-    
     $last = Warranty::getLastWarranty();
     Warranty::CalculationWarranty($query,$last);
-
     return redirect(route('warranty.index'));
-    //  $text='حلال اوسون';
-    //  return redirect(route('dashboard'))->withSuccess($text);
-    //   $query=[
-    //     'title'=>$title,
-    //     'type'=>$type,
-    //     'length'=>$length,
-    //     'status'=>$status,
-    //     'expire_time'=>$expire_time,
-    //     'product_id'=>$product_id
-
-
-
-    //   ];
-    //   $warranty_created = Warranty::create($query);
-
-     // $txt = 'پیام شما با موفقیت ثبت شد';
-     // return redirect(route('warranty.index'))->withSuccess($txt);
     }
 
     /**
@@ -95,13 +76,14 @@ else
      */
     public function show(Request $request)
     {
+
         $query=[
             'id' => $request->id
         ];
         $id=$query['id'];
-        $warranty=Warranty::find($id);   
+        $warranty=Warranty::find($id);
         return view('welcome',compact('warranty'));
-      
+
     }
 
     /**
@@ -109,8 +91,8 @@ else
      */
     public function edit($id)
     {
-        $warranty=Warranty::find($id);   
-      
+        $warranty=Warranty::find($id);
+
         return view('panel.cities.edit',compact('warranty'));
     }
 
@@ -121,7 +103,7 @@ else
     {
         $warranty=Warranty::find($id);
         $warranty->update($request->all());
-      
+
         return view('panel.cities.edit',compact('warranty'));
     }
 
@@ -130,11 +112,12 @@ else
      */
     public function destroy($id)
     {
-        $user = Warranty::find($id);
-        $bah=$user->serial_number;
-        Product::where('warranty_serial', $bah)->update(['warranty_serial' => null]); 
-       
-        $user->delete();
+        $warranty = Warranty::find($id);
+        $serial=$warranty->serial_number;
+
+        Product::where('warranty_serial', $serial)->update(['warranty_serial' => null]);
+
+        $warranty->update(['is_deleted' => 1]);
 
         return redirect()->route('warranty.index');
     }
@@ -146,11 +129,11 @@ else
         ];
         $id=$query['id'];
        $warranty= Warranty::where('serial_number', $id)->first();
-       if ($warranty==null) { 
+       if ($warranty==null) {
 
-        $war='وجود ندارد';
+        $noexits='وجود ندارد';
 
-        return view('welcome',compact('war'));
+        return view('welcome',compact('noexits'));
        }
        else
        {

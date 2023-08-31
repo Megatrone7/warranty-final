@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignid('type')->nullable()->constrained('warranty_types')->nullOnDelete();
-            $table->bigInteger('length');
-            $table->unsignedBigInteger('serial_number')->unique();
+            $table->bigInteger('length')->nullable();
+            $table->string('serial_number',255)->unique();
             $table->foreignId('status')->nullable()->constrained('status')->nullOnDelete();
             $table->dateTime('expire_time');
             $table->timestamp('created_at')->useCurrent();

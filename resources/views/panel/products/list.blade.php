@@ -134,17 +134,19 @@
 															</td>
 															<td>
                                 
-																<form action="{{ route('product.destroy',  $product->id) }}" method="POST">
-    @csrf
+																  
+				
 
-    @method('DELETE')
-																<button type="submit" class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$product->id}}'/>
+
+																<button  
+																type="button"
+																class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$product->id}}'/>
 																
-
+																
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																	حذف
 																	<!--end::Svg Icon-->
-																</form>
+																
                                 
                               
 
@@ -184,10 +186,11 @@
   <!--end::Page-->
 </div>
 <script>
-  $('body').on('click', '.delete-confirm', function() {
-      var id = $(this).attr('id').split('-')[1];
+  $('.delete-confirm').on( 'click', function() {
+	  var id = $(this).attr('id').split('-')[1];
+	  console.log(id);
       var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
-      var route = "{{route('product.index')}}/"+id+"?type=product";
+      var route = "product/"+id;
       var token = "{{ csrf_token() }}";
       q1(id,route,token,txt1);
     });

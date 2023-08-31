@@ -24,17 +24,18 @@ class Warranty extends Model
         'owner_id',
         'is_archive',
         'is_deleted',
-        'active_date'
-    
+        'active_date',
+        'details'
+
     ];
 
 
-     public static function getLastWarranty() 
+     public static function getLastWarranty()
      {
-        $last = Warranty::orderBy('id', 'desc')->first(); 
+        $last = Warranty::orderBy('id', 'desc')->first();
         if ($last==null) {
             $last= 0;
-        }  
+        }
         if($last!==0) {
             $last= $last->serial_number;
             $last = preg_replace("/[^0-9]/", '', $last);
@@ -47,24 +48,29 @@ class Warranty extends Model
 
      public static function CalculationWarranty($query,$last)
      {
-       
+
+        if($last >= 10000){
+            $last = $last %10000;
+
+        }
         $count= $query['count'];
         for($i=$last+1;$i<=$last+$count;$i++) {
-          $query['serial_number'] = $query['name'].$i.random_int(1,99); 
+          $query['serial_number'] = $query['name'].$i.random_int(1,99);
 
           self:: CreateWarranty($query);
-             
-    
-        }  
+
+
+        }
 
      }
 
 
 
+
 //      public static function CalculationExpiretime($query)
 //      {
-        
-//         if($query['type']==1) 
+
+//         if($query['type']==1)
 //         {
 //            $data=Carbon::now()->setTime(0, 0)->addMonth(3);
 //             $query['expire_time']=$data;
@@ -81,7 +87,7 @@ class Warranty extends Model
      {
        // self::CalculationExpiretime($query);
         Warranty::create($query);
-        
+
      }
      public static function get_warranties()
      {
@@ -121,6 +127,6 @@ if($count!==0) {
     $darsad = round($darsad);
     $array = ['darsad'=>$darsad,'tedadkol'=>$count,'garanti'=>$waranty];
     return $array;
-}      
+}
      }
 }

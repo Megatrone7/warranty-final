@@ -55,8 +55,6 @@ class ProductController extends Controller
   'owner_id' => Auth::user()->id,
   'product_serial'=>$request->product_serial
     ];
-    
-    Product::get_create($query);
     $txt = 'پیام شما با موفقیت ثبت شد';
     return redirect(route('product.index'))->withSuccess($txt);
     }
@@ -97,9 +95,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $user = Product::find($id);
-       
-        $user->delete();
+        Product::find($id)->delete($id);
 
         return redirect()->route('product.index');
     }
