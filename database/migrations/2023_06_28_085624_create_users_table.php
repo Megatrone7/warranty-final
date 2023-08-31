@@ -21,6 +21,9 @@ return new class extends Migration
             $table->bigInteger('mobile');
             $table->string('password');
             $table->foreignId('role')->nullable()->constrained()->nullOnDelete();
+            $table->integer('is_archive')->nullable();
+            $table->integer('is_deleted')->nullable();
+            $table->date('active_date')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             

@@ -93,18 +93,8 @@
   																	<label class="form-label">موبایل</label>
   																	<input type="text" name="mobile" class="form-control mb-2" value=""/>
   																</div>
-                                  <div class="mb-10 fv-row col-4">
-  																	<label class="form-label">تصویر</label>
-                                    <input class="form-control" type="file" name="image">
-  																</div>
-                                  <div class="mb-10 fv-row col-4">
-  																	<label class="required form-label">وضعیت</label>
-                                    <select class="form-control" data-control="select2" name='role' required>
-                                        <option selected disabled value="">انتخاب کنید</option>
-                                        <option value="0">غیرفعال</option>
-                                        <option value="1">فعال</option>
-                                    </select>
-  																</div>
+                                  
+                                
                                 </div>
 																<!--begin::Input group-->
 
@@ -167,7 +157,7 @@
 
   function check_mobile(mobile)
     {
-      var regex = new RegExp('^09\\d{9}$');
+      //var regex = new RegExp('^09\\d{9}$');
       return regex.test(mobile);
     }
     $('body').on('submit','form',function(e){

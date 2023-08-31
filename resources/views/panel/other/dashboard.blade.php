@@ -117,14 +117,7 @@
                     <!--begin::کارت body-->
                     <div class="card-body d-flex align-items-end pt-0 pb-4">
                       <!--begin::پردازش-->
-                      <div class="d-flex align-items-center flex-column mt-3 w-100">
-                        <div
-                          class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                          <span>کل</span>
-                          <span>محصول</span>
-                        </div>
-
-                      </div>
+                     
                       <!--end::پردازش-->
                     </div>
                     <!--end::کارت body-->
@@ -146,10 +139,10 @@
                       <!--begin::Title-->
                       <div class="card-title d-flex flex-column">
                         <!--begin::مقدار-->
-                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2"> مطلب</span>
+                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2"> گارانتی</span>
                         <!--end::مقدار-->
                         <!--begin::Subtitle-->
-                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">مطالب ماه جاری
+                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">گارانتی ماه جاری
                         </span>
                         <!--end::Subtitle-->
                       </div>
@@ -163,6 +156,7 @@
                         <div
                           class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
                           <span>کل</span>
+                    {{$warranties['tedadkol']}}
                           <span>مطلب</span>
                         </div>
 
@@ -177,120 +171,7 @@
                   <!--end::کارت widget 7-->
                 </div>
 
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-1">
-                  <a href="/admin/product_comments">
-                  <!--begin::کارت widget 20-->
-                  <div class="card card-flush bg-warning bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-30 mb-5 mb-xl-1"
-                    >
-                    <!--begin::Header-->
-                    <div class="card-header pt-5">
-                      <!--begin::Title-->
-                      <div class="card-title d-flex flex-column">
-                        <!--begin::مقدار-->
-                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2"> نظر</span>
-                        <!--end::مقدار-->
-                        <!--begin::Subtitle-->
-                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">نظرات ماه جاری
-                        </span>
-                        <!--end::Subtitle-->
-                      </div>
-                      <!--end::Title-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::کارت body-->
-                    <div class="card-body d-flex align-items-end pt-0 pb-4">
-                      <!--begin::پردازش-->
-                      <div class="d-flex align-items-center flex-column mt-3 w-100">
-                        <div
-                          class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                          <span>کل</span>
-                          <span>نظر</span>
-                        </div>
-
-                      </div>
-                      <!--end::پردازش-->
-                    </div>
-                    <!--end::کارت body-->
-                  </div></a>
-                  <!--end::کارت widget 20-->
-                  <!--begin::کارت widget 7-->
-
-                  <!--end::کارت widget 7-->
-                </div>
-
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-1">
-                  <a href="/admin/orders">
-                  <!--begin::کارت widget 20-->
-                  <div class="card card-flush bg-dark bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-30 mb-5 mb-xl-1"
-                  >
-                    <!--begin::Header-->
-                    <div class="card-header pt-5">
-                      <!--begin::Title-->
-                      <div class="card-title d-flex flex-column">
-                        <!--begin::مقدار-->
-                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2"> سفارش</span>
-                        <!--end::مقدار-->
-                        <!--begin::Subtitle-->
-                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">سفارشات ماه جاری
-                        </span>
-                        <!--end::Subtitle-->
-                      </div>
-                      <!--end::Title-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::کارت body-->
-                    <div class="card-body d-flex align-items-end pt-0 pb-4">
-                      <!--begin::پردازش-->
-                      <div class="d-flex align-items-center flex-column mt-3 w-100">
-                        <div
-                          class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                          <span>کل</span>
-                          <span>سفارش</span>
-                        </div>
-
-                      </div>
-                      <!--end::پردازش-->
-                    </div>
-                    <!--end::کارت body-->
-                  </div></a>
-                  <!--end::کارت widget 20-->
-                  <!--begin::کارت widget 7-->
-
-                  <!--end::کارت widget 7-->
-                </div>
-
-            
-                <!--end::Col-->
-                <!--begin::Col-->
-
-
-                <!--end::Col-->
-                <!--begin::Col-->
-
-                <!--end::Col-->
-              </div>
-              <!--end::Row-->
-
-              <!--begin::Row-->
-              <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-                <!--begin::Col-->
                
-                <div class="col-xl-6">
-                  <!--begin::Chart widget 36-->
-                  <div class="card card-flush overflow-hidden h-lg-100">
-                    <!--begin::Header-->
-                   
-                    <!--end::Header-->
-                    <!--begin::کارت body-->
-                    
-                    <!--end::کارت body-->
-                  </div>
-                  <!--end::Chart widget 36-->
-                </div>
-               
-                <!--end::Col-->
-              </div>
-              
               <div class="row g-5 g-xl-10 mb-5">
                 <div id="kt_app_content" class="app-content flex-column-fluid">
   								<!--begin::Content container-->
@@ -303,7 +184,7 @@
                         <div class="card-title">
                           <div class='row'>
                             <div class='col-12 mb-4'>
-                              <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">لیست آخرین محصولات</h1>
+                              <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">لیست آخرین گارانتی</h1>
                             </div>
                             <div class='col-12'>
                               <div class="d-flex align-items-center position-relative my-1">
@@ -342,7 +223,7 @@
   													<thead>
   														<tr class="fw-bold text-muted">
   															<th class="w-25px text-center">#</th>
-                                <th class="min-w-140px text-center">کد محصول</th>
+                                <th class="min-w-140px text-center">کد گارانتی</th>
                                 <th class="min-w-140px text-center">دسته بندی</th>
   															<th class="min-w-140px text-center">عنوان</th>
                                 <th class="min-w-140px text-center">صاحب</th>
@@ -363,14 +244,14 @@
                                 </td>
 
                                 <td>
-                                  {{$warranties->product_category}}
+                                  {{$warranties->product_categoryforshow}}
                                 </td>
                                 <td>
                                   {{$warranties->title}}
                                 </td>
 
                                 <td>
-                                  {{$warranties->owner_id}}
+                                  {{$warranties->owner_idforshow}}
                                 </td>
                                 <td>
                                   @if($warranties->status==0)
@@ -476,8 +357,9 @@
                                    {{$contacts->role}}
                                   
   															</td>
-@endforeach
+
   														</tr>
+                              @endforeach
                              
   													</tbody>
   													<!--end::Table body-->

@@ -19,11 +19,14 @@ return new class extends Migration
             $table->string('description');
     
             $table->foreignid('id_category')->nullable()->constrained('product_categories')->nullOnDelete();
-            $table->unsignedBigInteger('warranty_serial')->unique();
+            $table->char('warranty_serial')->unique();
             
             //$table->unsignedBigInteger('owner_id');
             // $table->foreignId('owner_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->foreignId('owner_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->integer('is_archive')->nullable();
+            $table->integer('is_deleted')->nullable();
+            $table->date('active_date')->nullable();
             $table->dateTime('sale_date')->nullable()->default(null);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

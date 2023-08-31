@@ -103,6 +103,7 @@ else
     {
         $warranty=Warranty::find($id);
         $warranty->update($request->all());
+        
 
         return view('panel.cities.edit',compact('warranty'));
     }

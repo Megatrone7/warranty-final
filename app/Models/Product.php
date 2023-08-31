@@ -11,6 +11,8 @@ use App\Exceptions\InvalidOrderException;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isNull;
+
 class Product extends Model
 {
     use HasFactory;
@@ -27,10 +29,21 @@ class Product extends Model
     
     public static function get_create($query)
     {
-         Product::create($query);
-         $product_category = $query['id_category'];
+
+        
+            $product_category = $query['id_category'];
         
             $warranty = Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first();
+
+            if($warranty == null){
+                //dd('hich garranty baraye shoma vojood nadarad');
+                return redirect('/product/create')->with('alert','sabt nashod');
+            }
+
+            if ($warranty !== null) {
+                Product::create($query);
+            }
+          
 
             Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first()->update(['status'=>1]);
 
@@ -43,8 +56,7 @@ class Product extends Model
 
     public function getidcategoryAttribute($value){
         $name =  Product_category::find($value);
-        $name = $name -> title; 
-        return $name;
+        return (isNull($name)) ?  $name = $name -> title :'دسته بندی حذف شده' ;
 
     }
     public static function get_product()
@@ -56,9 +68,21 @@ class Product extends Model
     
 
     public function getowneridforshowAttribute(){
-        $name = user::find($this->attributes['owner_id']);
-        $name = $name -> name;
-        return $name;
+
+        return ($this -> attributes['owner_id'] !== null) ?  user::find($this->attributes['owner_id'])-> name :'دسته بندی حذف شده' ;
+
+
+        // if ($this -> attributes['owner_id'] == null  ){
+        //     echo($this -> attributes['owner_id']);
+       
+        // }
+        // else {
+        //   $user = user::find($this->attributes['owner_id']);
+        //   return $user->name;
+        // }
+
+      
+        
 
     }
 }
