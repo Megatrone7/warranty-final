@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 
-
+use function PHPUnit\Framework\isNull;
 
 class Warranty extends Model
 {
@@ -94,39 +94,49 @@ class Warranty extends Model
         $count = Warranty::all();
        return count($count);
      }
-     public function getproductcategoryAttribute($value){
-        $name = Product_category::find($value);
-        $name = $name -> title;
-        return $name;
+     public function getproductcategoryforshowAttribute(){
+       
+        return ($this -> attributes['product_category'] !== null) ?  Product_category::find($this->attributes['product_category'])-> title :'دسته بندی حذف شده' ;
 
     }
-    public function getowneridAttribute($value){
-        $name = User::find($value);
-        $name = $name -> name;
-        return $name;
+    public function getowneridforshowAttribute(){
+
+        return ($this -> attributes['owner_id'] !== null) ?  user::find($this->attributes['owner_id'])-> name :'دسته بندی حذف شده' ;
+       
     }
-    public function gettypeAttribute($value){
-        $name = Warranty_type::find($value);
-        $name = $name -> type;
-        return $name;
+    public function gettypeAttributeforshow(){
+        
+        if ($this->attributes['type']==null) {
+            return ' پاک شده';
+        }
+        $name = Warranty_type::find($this->attributes['type']);      
+            $name = $name -> type;
+            return $name;
     }
      public static function get_persent()
      {
         $all=Warranty::all();
         $waranty=0;
         $count =count(Warranty::all());
-if($count!==0) {
+if($count !== 0) {
     foreach($all as $active) {
-        if($active['status']==1) {
+        if($active['status'] == 1) {
             $waranty++;
         }
 
 
     }
-    $darsad=$waranty*100/$count;
+    $darsad = $waranty * 100 / $count;
     $darsad = round($darsad);
-    $array = ['darsad'=>$darsad,'tedadkol'=>$count,'garanti'=>$waranty];
+
+    $array = ['darsad' => $darsad, 'tedadkol' => $count, 'garanti' => $waranty];
     return $array;
+}
+else{
+     $array = ['darsad' => 0, 'tedadkol' => 0, 'garanti' => 0];
+    return $array;
+    
+
 }
      }
 }

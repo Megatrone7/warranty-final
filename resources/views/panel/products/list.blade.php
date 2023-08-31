@@ -142,7 +142,8 @@
 																type="button"
 																class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm" id='delete-{{$product->id}}'/>
 																
-																
+
+@method('DELETE')
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																	حذف
 																	<!--end::Svg Icon-->

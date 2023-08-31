@@ -93,8 +93,8 @@
   																	<input type="text" name="email" class="form-control mb-2" value=""/>
   																</div>
                                   <div class="mb-10 fv-row col-4">
-  																	<label class="form-label">تصویر</label>
-                                    <input class="form-control" type="file" name="image">
+  																	<label class="form-label">پسورد</label>
+                                    <input class="form-control" type="password" name="password">
   																</div>
                                   <div class="mb-10 fv-row col-4">
   																	<label class="required form-label">وضعیت</label>

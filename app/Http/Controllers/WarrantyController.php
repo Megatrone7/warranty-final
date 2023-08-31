@@ -28,9 +28,9 @@ else
 
     $id=Auth::user()->id;
 
-    $warranti=Warranty::where('owner_id', $id)->get();
+    $Warranty=Warranty::where('owner_id', $id)->get();
 
-    return view('panel.cities.list2', compact('warranti'));
+    return view('panel.cities.list', compact('Warranty'));
 }
 
     }
@@ -103,6 +103,7 @@ else
     {
         $warranty=Warranty::find($id);
         $warranty->update($request->all());
+        
 
         return view('panel.cities.edit',compact('warranty'));
     }

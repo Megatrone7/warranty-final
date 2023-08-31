@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeleteController;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Product_categoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WarrantyController;
@@ -44,16 +45,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-Route::resource('/admins',UserController::class);
+    
 Route::resource('/product',ProductController::class);
 Route::resource('/category',Product_categoryController::class);
 Route::resource('/warranty',WarrantyController::class);
 Route::post('/warrantys',[WarrantyController::class,'welcome'])->name('warrantys');
-Route::get('/servicee',[ServiceController::class,'asqar'])->name('servicee');
 Route::resource('/service',ServiceController::class);
+});
+Route::middleware(['auth','Admin'])->group(function () {
+    Route::resource('/admins',UserController::class);
+});
+
 // Route::resource('/dashboard', WarrantyController::class);
 // Route::resource('/dsah', UserController::class);
 

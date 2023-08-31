@@ -68,6 +68,11 @@
                                           {{session('success')}}
                                     </div>
                                   @endif
+								  @if(session('faild'))
+                                    <div class="alert alert-faild mb-4" role="alert">
+                                          {{session('faild')}}
+                                    </div>
+                                  @endif
                                   @if(count($errors)>0)
                                     <div class="alert alert-danger mb-4" role="alert">
                                           @foreach($errors->all() as $error)

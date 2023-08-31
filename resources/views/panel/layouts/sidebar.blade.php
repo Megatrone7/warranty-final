@@ -92,6 +92,12 @@
                 </span>
                 <span class="menu-title">کالا</span>
               </a>
+              <a class="menu-link active" href="/category">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">دسته بندی کالا</span>
+              </a>
               <!--end:Menu link-->
             </div>
             <!--end:Menu item-->

@@ -55,7 +55,8 @@ class ProductController extends Controller
   'owner_id' => Auth::user()->id,
   'product_serial'=>$request->product_serial
     ];
-    $txt = 'پیام شما با موفقیت ثبت شد';
+    Product::get_create($query);
+    $txt = 'گارانتی وجود ندارد';
     return redirect(route('product.index'))->withSuccess($txt);
     }
 

@@ -1,4 +1,4 @@
-@if(Auth::user()->role==1)
+
 @extends('panel.layouts.main')
 @section('content')
 <script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-theme-mode")) { themeMode = document.documentElement.getAttribute("data-theme-mode"); } else { if (localStorage.getآیتم("data-theme") !== null) { themeMode = localStorage.getآیتم("data-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", themeMode); }</script>
@@ -198,6 +198,3 @@
 </script>
 @endsection
 
-@else
-{"{شما مجاز نیستی"}}
-@endif
