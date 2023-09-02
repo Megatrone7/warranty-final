@@ -150,44 +150,31 @@ color:red!important;
         <img src="/panel/assets/media/auth/welcome-dark.png" width="120" height="120" alt="logo"/>
             <a href="{{ url('/dashboard') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">داشبورد</a>
         @else
-        
         <img src="/panel/assets/media/auth/welcome-dark.png" width="50" height="50" alt="logo"/>
             <a href="{{ route('login') }}" class="font-semibold navlink text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ورود</a>
 
         @endauth
-        <a href="{{ route('code') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">فعال سازی</a>
-        
     </div>
 @endif
-
     <div class="container">
         <div class="form-container" id="login-form">
           <h1>گارانتی</h1>
-          <form id="kt_ecommerce_add_product_form" method="post" action="{{route('warrantys')}}" enctype="multipart/form-data">
+          <form id="kt_ecommerce_add_product_form" method="post" action="{{route('code')}}" enctype="multipart/form-data">
             @csrf
             <label for="username">شماره سریال</label>
             <input type="text" id="username" name="id" required>
 
-            <button type="submit">جستجو</button>
+            <button type="submit">ثبت</button>
           </form>
           <?php
           echo '<br>'
           ?>
-          @isset($noexits)
-        {{$noexits}}
+          @isset($txt)
+        {{$txt}}
     @endisset
-    @isset($warranty)
-      </br>
-   <div class="  d-flex flex-column">
-    <div class="d-flex justify-content-between"><span>{{$warranty->expire_time}}              </span> <span>: تاریخ انقضا </span></div>
-    <a href="{{route('service.create',["warranty" => $warranty->serial_number])}}" class="shekayat-btn">
-      <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-    ثبت شکایت
-      <!--end::Svg Icon-->
-  </a>
+   
    </div>
         </div>
-        @endisset
     
         
       </div>

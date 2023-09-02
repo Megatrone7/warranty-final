@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -39,8 +39,8 @@ class UserController extends Controller
   'email' => $request->email,
  'mobile' =>$request->mobile,
   'role' =>  $request->role,
-  'password' => bcrypt($request->passowrd)
- 
+  'password' => Hash::make($request->password),
+
     ];
     User::create($query);   
     $txt = 'پیام شما با موفقیت ثبت شد';

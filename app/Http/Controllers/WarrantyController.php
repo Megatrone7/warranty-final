@@ -138,9 +138,29 @@ else
        }
        else
        {
-
     return view('welcome', compact('warranty'));
 }
+    }
+    public function code(Request $request)
+    {
+        $query=[
+            'id' => $request->id
+        ];
+        $id=$query['id'];
+        $warranty= Warranty::where('serial_number', $id)->first();
+        if($warranty->type==2){
+            // Warranty::where('serial_number',$id)->update('status'=> 1);
+            $warranty->update(['status'=>1]);
+            $txt='ثبت شد';
+            return view('code',compact('txt'));
+        }
+        else{
+            $txt='از این نوع نمیباشد';
+            return view('code',compact('txt'));
+
+        }
+
+        
     }
 
 

@@ -90,7 +90,7 @@
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">کالا</span>
+                <span class="menu-title">ثبت کالا و اختصاص گارانتی</span>
               </a>
               <a class="menu-link active" href="/category">
                 <span class="menu-bullet">

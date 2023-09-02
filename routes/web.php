@@ -31,6 +31,12 @@ Route::get('/', function () {
     return view('welcome');
     // auth()->user()->givePermissionsTo(['delete post','delete user']);
 });
+Route::get('code', function () {
+    return view('code');
+    // auth()->user()->givePermissionsTo(['delete post','delete user']);
+});
+Route::post('/code',[WarrantyController::class,'code'])->name('code');
+
 Route::get('/dashboard', function () {
     return view('panel.other.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -50,6 +56,7 @@ Route::resource('/product',ProductController::class);
 Route::resource('/category',Product_categoryController::class);
 Route::resource('/warranty',WarrantyController::class);
 Route::post('/warrantys',[WarrantyController::class,'welcome'])->name('warrantys');
+
 Route::resource('/service',ServiceController::class);
 });
 Route::middleware(['auth','Admin'])->group(function () {
