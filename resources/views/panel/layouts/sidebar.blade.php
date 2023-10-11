@@ -74,12 +74,15 @@
             <!--begin:Menu item-->
             <div class="menu-item">
               <!--begin:Menu link-->
+              @can('isAdmin')
               <a class="menu-link active" href="/admins">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
+                
                 <span class="menu-title"> همکاران</span>
               </a>
+              @endcan
               <a class="menu-link active" href="/warranty">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
@@ -92,14 +95,25 @@
                 </span>
                 <span class="menu-title">ثبت کالا و اختصاص گارانتی</span>
               </a>
+              @can('isAdmin')
               <a class="menu-link active" href="/category">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot"></span>
                 </span>
+                
                 <span class="menu-title">دسته بندی کالا</span>
               </a>
+              
+              <a class="menu-link active" href="/service">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">سرویس</span>
+              </a>
+              @endcan
               <!--end:Menu link-->
             </div>
+            
             <!--end:Menu item-->
             <!--begin:Menu item-->
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
     
             $table->foreignid('id_category')->nullable()->constrained('product_categories')->nullOnDelete();
-            $table->char('warranty_serial')->unique();
+            $table->char('warranty_serial')->unique()->nullable();
             
             //$table->unsignedBigInteger('owner_id');
             // $table->foreignId('owner_id')->references('id')->on('users')->onDelete('SET NULL');

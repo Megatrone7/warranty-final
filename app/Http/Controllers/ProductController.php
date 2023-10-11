@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product_category;
 use App\Models\Product;
+use App\Models\Warranty;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -35,8 +36,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories=Product_category::all();
-        return view('panel.products.create',compact('categories'));
+        $categories=Product_category::all();  
+        $warranties = [];
+        foreach ($categories as $category) 
+        {
+            $warranties[$category->title] = Warranty::where('product_category',$category -> id)->where('status',0)->where('owner_id',Auth::user()->id)->count();
+        }  
+        return view('panel.products.create',compact('categories','warranties'));
     }
 
     /**
@@ -55,9 +61,9 @@ class ProductController extends Controller
   'owner_id' => Auth::user()->id,
   'product_serial'=>$request->product_serial
     ];
+    
     Product::get_create($query);
-    $txt = 'گارانتی وجود ندارد';
-    return redirect(route('product.index'))->withSuccess($txt);
+    return redirect(route('product.index'));
     }
 
     

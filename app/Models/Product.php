@@ -32,25 +32,23 @@ class Product extends Model
 
         
             $product_category = $query['id_category'];
-        
+            for($i=0;$i<=$query['description'];$i++){
             $warranty = Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first();
 
             if($warranty == null){
                 //dd('hich garranty baraye shoma vojood nadarad');
                 return redirect('/product/create')->with('alert','sabt nashod');
             }
-
+            
             if ($warranty !== null) {
-                Product::create($query);
-            }
-          
-
+             Product::create($query);
             Warranty::where('product_category',$product_category)->where('status',0)->where('owner_id',Auth::user()->id)->first()->update(['status'=>1]);
 
-            $warranty = $warranty->serial_number;
+            $warrantySerialNumber= $warranty->serial_number;
 
-            Product::where('id_category',$product_category)->where('warranty_serial',null)->first()->update(['warranty_serial'=>$warranty]);  
-       
+            Product::where('id_category',$product_category)->where('warranty_serial',null)->first()->update(['warranty_serial'=>$warrantySerialNumber]);  
+            }
+        }
     
 }
 

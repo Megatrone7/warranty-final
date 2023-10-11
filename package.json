@@ -16,6 +16,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "breeze": "^1.2.2"
+        "@majidh1/jalalidatepicker": "^0.9.3",
+        "breeze": "^1.2.2",
+        "jalali-moment": "^3.3.11"
     }
 }

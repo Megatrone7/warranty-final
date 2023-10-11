@@ -15,24 +15,26 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $services=Service::all();
+        return view('panel.cities.list2',compact('services'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request  $request)
+    public function create($ss)
     {
 
 
-        $warranty = $request->get("warranty");
+        $warranty = $ss;
         //dd($warranty); haji okaye damt garm fahmidam chi shod
-
         $product = Product::where('warranty_serial', $warranty)->first();
+        $service = Service::where('product_id', $product->id)->get();
+        if($service->isEmpty()){
         $query = [
-            'owner_id' => $product->owner_id,
             'product_id' => $product->id,
-            'description' => $product->desciption,
+            'owner_id' => $product->owner_id,
+            'description' => $product->description,
             'Date_of_referral_for_repair' => null,
             'The_date_of_leaving_the_repair_shop' => null
         ];
@@ -69,15 +71,19 @@ class ServiceController extends Controller
            // در صورت بروز خطایی دیگر
             echo $ex->getMessage();
         }
+        
+
 
 
 
 
 
         return view('welcome');
-
-
-
+}
+else{
+    $txt='قبلا سرویس ثبت شده است';
+    return view('welcome',compact('txt'));
+}
     }
 
     /**
@@ -99,26 +105,30 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $warranty)
+    public function edit($id)
     {
 
-       //
+        $Service=Service::find($id);
+
+        return view('panel.cities.edit2',compact('Service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id    )
     {
-        //
+        $Service=Service::find($id);
+        $Service->update($request->all());
+        return redirect('service');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+     //
     }
 
 }

@@ -188,13 +188,13 @@
   <!--end::Page-->
 </div>
 <script>
-  $('body').on('click', '.delete-confirm', function() {
-      var id = $(this).attr('id').split('-')[1];
-      var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
-      var route = "{{route('admins.index')}}/"+id;
-      var token = "{{ csrf_token() }}";
-      q1(id,route,token,txt1);
-    });
+//   $('body').on('click', '.delete-confirm', function() {
+//       var id = $(this).attr('id').split('-')[1];
+//       var txt1 = 'آیا از حذف این مورد اطمینان دارید ؟';
+//       var route = "{{route('admins.index')}}/"+id;
+//       var token = "{{ csrf_token() }}";
+//       q1(id,route,token,txt1);
+//     });
 </script>
 @endsection
 

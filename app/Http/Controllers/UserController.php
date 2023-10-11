@@ -14,7 +14,6 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
-        
        return view('panel.admins.list',compact('users'));
     }
 
@@ -44,7 +43,7 @@ class UserController extends Controller
     ];
     User::create($query);   
     $txt = 'پیام شما با موفقیت ثبت شد';
-    return redirect(route('admins.index'))->withSuccess('salam');
+    return redirect(route('admins.index'))->withSuccess(' کاربر ثبت شد');
     }
 
 

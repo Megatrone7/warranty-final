@@ -16,20 +16,8 @@ class DashboardController extends Controller
         $contact = User::where('role', 1)
         ->take(4)
         ->get();
-        // $haha=[];
-
+    
          $contact=User::all();
-        // Foreach($contact as $contacts)
-        // {
-        //    if ($contacts['role']==4)
-        //    {
-        //    array_push($haha,$contacts);
-
-
-        //    }    
-
-
-        // }
         $count=User::get_contact();
          $product=Product::get_product();
          $warrantiess=Warranty::all();

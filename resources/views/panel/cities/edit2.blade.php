@@ -22,15 +22,10 @@
 							<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
 								<!--begin::Toolbar container-->
 								<div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
-									<ul>
-									@foreach($categories as $category)
-    <li>تعداد گارانتی موجود {{ $category->title .":". $warranties[$category->title] }}</li>
-@endforeach
-									</ul>
 									<!--begin::Page title-->
 									<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 										<!--begin::Title-->
-										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">افزودن محصول</h1>
+										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">ویرایش مدیر</h1>
 										<!--end::Title-->
 										<!--begin::Breadcrumb-->
 
@@ -43,14 +38,14 @@
 								</div>
 								<!--end::Toolbar container-->
 							</div>
-			
 							<!--end::Toolbar-->
 							<!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-xxl">
 									<!--begin::Form-->
-									<form id="kt_ecommerce_add_product_form" method="post" action="{{route('product.store')}}" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+									<form id="kt_ecommerce_add_product_form" method="post" action="{{ route('service.update',$Service->id )}}" class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data">
+                    {{method_field('put')}}
                     @csrf
                     <!--begin::کناری column-->
 
@@ -74,11 +69,6 @@
                                           {{session('success')}}
                                     </div>
                                   @endif
-								  @if(session('faild'))
-                                    <div class="alert alert-faild mb-4" role="alert">
-                                          {{session('faild')}}
-                                    </div>
-                                  @endif
                                   @if(count($errors)>0)
                                     <div class="alert alert-danger mb-4" role="alert">
                                           @foreach($errors->all() as $error)
@@ -87,37 +77,37 @@
                                     </div>
                                   @endif
                                 <div class="row">
-                                  <div class="mb-10 fv-row col-6">
-  																	<label class="required form-label">عنوان فارسی</label>
-  																	<input type="text" name="name" class="form-control mb-2" value="" required/>
+                                  <div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">صاحب کالا</label>
+  																	<input type="text" name="owner_id" class="form-control mb-2" value="" required/>
   																</div>
-																  <div class="mb-10 fv-row col-6">
-  																	<label class="required form-label">شماره سریال</label>
-  																	<input type="text" name="product_serial" class="form-control mb-2" value="" required/>
+                                  <div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">شماره کالا </label>
+  																	<input type="text" name="product_id" class="form-control mb-2" value="" required/>
   																</div>
-														
-
-                                  <div class="mb-10 fv-row col-3">
-  																	<label class="required form-label">دسته بندی</label>
-                                    <select class="form-control" data-control="select2" name='id_category' required>
-                                      <option  selected value="">انتخاب کنید</option>
-                                      @foreach($categories as $category1)
-                                        <option  value="{{$category1->id}}">{{$category1->title}}</option>
-                                       
-                                      @endforeach
-                                    </select>
+                                
+																  <div class="mb-10 fv-row col-4">
+  																	<label class="required form-label">توضیحات </label>
+  																	<input type="" name="description" class="form-control mb-2" value="" required/>
   																</div>
-																  <div class="mb-10 fv-row col-6">
-  																	<label class="required form-label">تعداد</label>
-  																	<input type="text" name="description" class="form-control mb-2" value="" required/>
+                                
+																
+																  <div class="mb-10 fv-row col-4">
+  																	<label class="form-label" >تاریخ شکایت </label>
+  																	<input type="date" name="Date_of_referral_for_repair" class="form-control mb-2" value=""/>
   																</div>
+																  <div class="mb-10     fv-row col-4">
+  																	<label class="form-label"> تاریخ برگشت	</label>
+  																	<input type="date" name="The_date_of_leaving_the_repair_shop" class="form-control mb-2" value="2013-01-08"/>
+  																</div>	
+                                </div>
 																<!--begin::Input group-->
 
 																<!--end::Input group-->
 																<!--begin::Input group-->
                                 <div class="d-flex justify-content-end">
                                   <!--begin::Button-->
-                                  <a href="/product" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
+                                  <a href="/warranty" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">بازگشت</a>
                                   <!--end::Button-->
                                   <!--begin::Button-->
                                   <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -163,26 +153,13 @@
   <!--end::Page-->
 </div>
 <script>
-$(document).ready(function(){
-  var tags = document.querySelector("#tags");
-  new Tagify(tags);
-  tinymce.init({
-      selector: 'textarea',
-      height: 400,
-      plugins: [
-        'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        'searchreplace wordcount visualblocks visualchars code fullscreen table',
-      ],
-      toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-      image_advtab: true,
-      images_upload_url: '/admin/upload',
-      relative_urls: false,
-    }).then(function() {
-      $('.tox-tinymce').css('direction','rtl');
-    });
+ 
+  $('[name="owner_id"]').val('{{$Service->owner_id}}');
+  $('[name="product_id"]').val('{{$Service->product_id}}');
+  $('[name="description"]').val('{{$Service->description}}');
+  $('[name="Date_of_referral_for_repair"]').val('{{$Service->Date_of_referral_for_repair}}');
+  $('[name="The_date_of_leaving_the_repair_shop"]').val('{{$Service->The_date_of_leaving_the_repair_shop}}');
 
-
-});
+ 
 </script>
 @endsection

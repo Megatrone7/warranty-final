@@ -19,19 +19,17 @@ class WarrantyController extends Controller
      */
     public function index()
     {
-        $Warranty = Warranty::where('is_deleted', null)->get();
+        $Warranty = Warranty::where('is_deleted', null)->orderBy('created_at', 'desc')->get();
 if(Auth::user()->role==1) {
     return view('panel.cities.list', compact('Warranty'));
 }
 else
 {
-
     $id=Auth::user()->id;
-
-    $Warranty=Warranty::where('owner_id', $id)->get();
-
+    $Warranty=Warranty::where('owner_id', $id)->orderBy('created_at', 'desc')->get();
     return view('panel.cities.list', compact('Warranty'));
 }
+
 
     }
 
@@ -76,12 +74,12 @@ else
      */
     public function show(Request $request)
     {
-
         $query=[
             'id' => $request->id
         ];
         $id=$query['id'];
         $warranty=Warranty::find($id);
+        
         return view('welcome',compact('warranty'));
 
     }
@@ -129,16 +127,18 @@ else
             'id' => $request->id
         ];
         $id=$query['id'];
-       $warranty= Warranty::where('serial_number', $id)->first();
+       $warranty= Warranty::where('serial_number', $id)->where('status',1)->first();
+       $timestamp = $warranty->expire_time;
+        $splitTimeStamp = explode(" ",$timestamp);
+        $date = $splitTimeStamp[0];
+        $time = $splitTimeStamp[1];
        if ($warranty==null) {
-
         $noexits='وجود ندارد';
-
         return view('welcome',compact('noexits'));
        }
        else
        {
-    return view('welcome', compact('warranty'));
+    return view('welcome', compact('warranty','date'));
 }
     }
     public function code(Request $request)
@@ -148,20 +148,21 @@ else
         ];
         $id=$query['id'];
         $warranty= Warranty::where('serial_number', $id)->first();
-        if($warranty->type==2){
+        if($warranty->type==2&&$warranty->status==0){
             // Warranty::where('serial_number',$id)->update('status'=> 1);
             $warranty->update(['status'=>1]);
             $txt='ثبت شد';
             return view('code',compact('txt'));
         }
         else{
-            $txt='از این نوع نمیباشد';
+            $txt='قبلا فعال شده یا از این نوع نمیباشد';
             return view('code',compact('txt'));
 
         }
 
         
     }
+    
 
 
 }

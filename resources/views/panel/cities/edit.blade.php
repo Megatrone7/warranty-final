@@ -93,7 +93,7 @@
                                 
 																  <div class="mb-10 fv-row col-4">
   																	<label class="form-label">وضعیت</label>
-  																	<input type="text" name="serial_number" class="form-control mb-2" value=""/>
+  																	<input type="text" name="status" class="form-control mb-2" value=""/>
   																</div>
 																  <div class="mb-10 fv-row col-4">
   																	<label class="form-label">تاریخانقضا</label>

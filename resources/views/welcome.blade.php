@@ -26,8 +26,9 @@ background: linear-gradient(96deg, rgba(236,236,247,1) 0%, rgba(56,164,239,1) 10
     }
 
     .form-container {
-      width: 600px;
+      width: 800px;
       margin: 0 auto;
+     
       padding: 50px;
       background-color: #ffffff;
       border-radius: 10px;
@@ -46,7 +47,11 @@ background: linear-gradient(96deg, rgba(236,236,247,1) 0%, rgba(56,164,239,1) 10
       display: flex;
       flex-direction: column;
     }
-   
+    
+    .date {
+        font-size: 20px; /* اندازه متن را به دلخواه خود تغییر دهید */
+    }
+
 
     label {
       margin-bottom: 10px;
@@ -146,22 +151,24 @@ color:red!important;
     </div>
     @if (Route::has('login'))
     <div class="nav-login sm:fixed sm:top-0 sm:right-0 px-5 py-2 text-right z-10">
-        @auth
-        <img src="/panel/assets/media/auth/welcome-dark.png" width="120" height="120" alt="logo"/>
-            <a href="{{ url('/dashboard') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">داشبورد</a>
-        @else
-        
-        <img src="/panel/assets/media/auth/welcome-dark.png" width="50" height="50" alt="logo"/>
-            <a href="{{ route('login') }}" class="font-semibold navlink text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ورود</a>
-
-        @endauth
-        <a href="{{ route('code') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">فعال سازی</a>
+      
+        {{-- <a href="{{ route('code') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">فعال سازی</a> --}}
         
     </div>
 @endif
-
     <div class="container">
         <div class="form-container" id="login-form">
+          <div>
+          @auth
+          <img src="/panel/assets/media/auth/welcome-dark.png" width="120" height="120" alt="logo"/>
+              <a  href="{{ url('/dashboard') }}" class="navlink font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">داشبورد</a>
+          @else 
+          
+          <img src="/panel/assets/media/auth/welcome-dark.png" width="50" height="50" alt="logo"/>
+              <a style="margin-left: 620px" href="{{ route('login') }}" class="font-semibold navlink text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ورود</a>
+  
+          @endauth
+          </div>
           <h1>گارانتی</h1>
           <form id="kt_ecommerce_add_product_form" method="post" action="{{route('warrantys')}}" enctype="multipart/form-data">
             @csrf
@@ -170,7 +177,10 @@ color:red!important;
 
             <button type="submit">جستجو</button>
           </form>
-          <?php
+          @isset($txt)
+          {{$txt}}
+      @endisset
+        <?php
           echo '<br>'
           ?>
           @isset($noexits)
@@ -178,9 +188,10 @@ color:red!important;
     @endisset
     @isset($warranty)
       </br>
-   <div class="  d-flex flex-column">
-    <div class="d-flex justify-content-between"><span>{{$warranty->expire_time}}              </span> <span>: تاریخ انقضا </span></div>
-    <a href="{{route('service.create',["warranty" => $warranty->serial_number])}}" class="shekayat-btn">
+      <div class="d-flex flex-column">
+        <div class="date"><span><b>{{$date}}</b></span> <span>: تاریخ انقضا</span>
+        </div>  
+    <a href="/service/create/{{ $warranty->serial_number}}" class="shekayat-btn">
       <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
     ثبت شکایت
       <!--end::Svg Icon-->
@@ -188,7 +199,6 @@ color:red!important;
    </div>
         </div>
         @endisset
-    
         
       </div>
       <script>

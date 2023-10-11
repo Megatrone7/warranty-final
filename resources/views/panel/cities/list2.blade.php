@@ -26,7 +26,7 @@
 
                   <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 										<!--begin::Title-->
-										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">لیست گارانتی </h1>
+										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">سرویس ها  </h1>
 										<!--end::Title-->
 										<!--begin::Breadcrumb-->
 
@@ -87,61 +87,49 @@
 													<thead>
 														<tr class="fw-bold text-muted">
 															<th class="w-25px text-center">#</th>
-															<th class="min-w-140px text-center">نام</th>
-															<th class="min-w-140px text-center">نوع</th>
-															<th class="min-w-140px text-center">مدت زمان </th>
-															<th class="min-w-140px text-center">سریال </th>
-															<th class="min-w-140px text-center">وضعیت</th>
-															<th class="min-w-120px text-center">تاریخ انقضا</th>
-															<th class="min-w-120px text-center">دسته بندی</th>
-															<th
-															<th
-															class="min-w-100px text-center">صاحب</th>
+															<th class="min-w-140px text-center">نام همکار</th>
+															<th class="min-w-140px text-center"> شماره کالا </th>
+															<th class="min-w-140px text-center">توضیحات </th>
+															<th class="min-w-140px text-center">تاریخ شکایت </th>
+															<th class="min-w-140px text-center">تاریخ برگشت</th>
+															
+															
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
                             <?php $i=1; ?>
-                            @foreach($warranti as $warranties)
+                            @foreach($services as $service)
 														<tr>
                               <td>
                                 {{$i++}}
                               </td>
 															<td>
-																{{$warranties->title}}
+																{{$service->owneridforshow}}
 															</td>
 															<td>
-																{{$warranties->type}}
+																{{$service->product_id}}
 															</td>
 															<td>
-																{{$warranties->length}}ماه
+																{{$service->description}}
 															</td>
 															<td>
-																{{$warranties->serial_number}}
+																{{$service->Date_of_referral_for_repair}}
 															</td>
 															<td>
-																@if($warranties->status=='0')
-                                غیرفعال
-                              @else
-							  فعال
-							  @endif
+																{{$service->The_date_of_leaving_the_repair_shop}}
 															</td>
-															<td>
-																{{$warranties->expire_time}}
-															</td>
-															<td>
-																{{$warranties->product_category}}
-															</td>
-															<td>
-																{{$warranties->owner_id}}
-
-															</td>
-															<td>
-
-
-
-															</td>
+														<td>
+														@can('isAdmin')
+                                                                                                     <a href="{{ route('service.edit', $service->id) }}"
+                                                                        class="btn text-warning btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                                        <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                                        ویرایش
+                                                                        <!--end::Svg Icon-->
+                                                                    </a>
+														</td>
+                                                                @endcan
 														</tr>
                             @endforeach
 													</tbody>

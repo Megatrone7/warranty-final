@@ -19,7 +19,7 @@ class Admin
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role != 1) {
-                return redirect()->route('dashboard');
+                return redirect()->route('product.index');
             }
         }
         return $next($request);

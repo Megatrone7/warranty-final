@@ -170,17 +170,17 @@
                                                             </td>
                                                             <td>
                                                                 @can('isAdmin')
-                                                                    <form
-                                                                        action="{{ route('warranty.destroy', $warranties->id) }}"
-                                                                        method="POST">
+                                                                        <form
+                                                                            action="{{ route('warranty.destroy', $warranties->id) }}"
+                                                                            method="POST">
 
-                                                                        @csrf
+                                                                            @csrf
 
-                                                                        @method('DELETE')
+                                                                            @method('DELETE')
 
-                                                                        <button type="submit"
-                                                                            class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm"
-                                                                            id='delete-{{ $warranties->id }}' />
+                                                                            <button type="submit"
+                                                                                class="btn text-danger btn-bg-light btn-active-color-primary btn-sm delete-confirm"
+                                                                                id='delete-{{ $warranties->id }}' />
 
 
                                                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
@@ -195,7 +195,8 @@
                                                                         <!--end::Svg Icon-->
                                                                     </a>
                                                                 @endcan
-
+                                                                <a href="/print/{{$warranties->id}}"
+                                                                    class="btn text-warning btn-bg-light btn-active-color-primary btn-sm me-1">پرینت
                                                             </td>
                                                         </tr>
                                                     @endforeach

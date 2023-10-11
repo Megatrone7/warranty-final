@@ -6,6 +6,7 @@ use App\Http\Controllers\WarrantyController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Printable;
 
 use Carbon\Carbon;
 
@@ -101,7 +102,7 @@ class Warranty extends Model
     }
     public function getowneridforshowAttribute(){
 
-        return ($this -> attributes['owner_id'] !== null) ?  user::find($this->attributes['owner_id'])-> name :'دسته بندی حذف شده' ;
+        return ($this -> attributes['owner_id'] !== null) ?  user::find($this->attributes['owner_id'])-> name :'کاربر حذف شده' ;
        
     }
     public function gettypeAttributeforshow(){

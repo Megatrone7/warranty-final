@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('product_id')->nullable()->constrained('product')->nullOnDelete();
+            $table->foreignId('product_id')->nullable()->constrained('products')->nullOnDelete();
             $table->string('description');
-            $table->dateTime('Date_of_referral_for_repair')->default(null);
-            $table->dateTime('The_date_of_leaving_the_repair_shop')->default(null);
+            $table->dateTime('Date_of_referral_for_repair')->nullable();
+            $table->dateTime('The_date_of_leaving_the_repair_shop')->nullable();
             $table->integer('is_archive')->nullable();
             $table->integer('is_deleted')->nullable();
             $table->date('active_date')->nullable();

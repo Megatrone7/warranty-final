@@ -20,7 +20,8 @@ class Service extends Model
         $time=Carbon::now();
         $query['Date_of_referral_for_repair']=$time;
         Service::create($query);
-
-        
+    }
+    public function getowneridforshowAttribute(){
+        return ($this -> attributes['owner_id'] !== null) ?  user::find($this->attributes['owner_id'])-> name :'کاربر وجود ندارد' ;
     }
 }

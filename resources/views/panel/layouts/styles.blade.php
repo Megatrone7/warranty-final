@@ -14,6 +14,7 @@
 
 <script src="/panel/assets/js/jquery.min.js"></script>
 <script src="/panel/assets/plugins/custom/tinymce-rtl/tinymce.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css">
 
 <link type="text/css" rel="stylesheet" href="/panel/assets/css/persianDatepicker-default.css" />
 <script type="text/javascript" src="/panel/assets/js/persianDatepicker.js"></script>
@@ -21,3 +22,4 @@
 <script src="/panel/assets/js/apex.js"></script>
 <!--end::Global Stylesheets Bundle-->
 <script src="/panel/assets/js/custom.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
